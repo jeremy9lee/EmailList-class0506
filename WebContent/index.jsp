@@ -1,9 +1,15 @@
+<%@page import="com.sds.icto.vo.EmailListVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.sds.icto.dao.EmailListDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
 String fn = request.getParameter("fn");
 String ln = request.getParameter("ln");
 String email = request.getParameter("email");
 
+
+EmailListDAO dao = new EmailListDAO();
+ArrayList<EmailListVO> list = (ArrayList<EmailListVO>)dao.fetchList();
 
 %>
 <html>
@@ -16,20 +22,25 @@ String email = request.getParameter("email");
 	<p>입력한 정보 내역입니다.</p>
 	<!-- 메일정보 리스트 -->
 	<%-- list에서 하나씩 빼서 테이블를 채운다--%>
+	
+	
+	<% for(int i=0; i<list.size(); i++){
+		%>
 	<table border="1" cellpadding="5" cellspacing="2">
 		<tr>
 			<td align=right>First name: </td>
-			<td><%=fn %></td>
+			<td><%=list.get(i).getFirstName() %></td>
 		</tr>
 		<tr>
 			<td align=right width="110">Last name: </td>
-			<td width="110"><%=ln %></td>
+			<td width="110"><%=list.get(i).getLastName() %></td>
 		</tr>
 		<tr>
 			<td align=right>Email address: </td>
-			<td><%=email %></td>
+			<td><%=list.get(i).getEmail() %></td>
 		</tr>
 	</table>
+	<% }%>
 	<br>
 	<p>
 		<a href = "form_emaillist.jsp">추가메일 등록</a>

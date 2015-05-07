@@ -32,9 +32,9 @@ public class SignInServlet extends HttpServlet {
 	protected void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		EmailListDAO dao = new EmailListDAO();
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		EmailListDAO dao = new EmailListDAO();
 		String fn = request.getParameter("fn");
 		String ln = request.getParameter("ln");
 		String email = request.getParameter("email");

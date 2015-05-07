@@ -22,6 +22,9 @@ public class EmailListVO {
 		this.lastName = lastName;
 		this.email = email;
 	}
+	public EmailListVO() {
+		// TODO Auto-generated constructor stub
+	}
 	public long getNo() {
 		return no;
 	}
